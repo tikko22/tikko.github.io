@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Livre em Construção — Uma jornada rumo à liberdade financeira</title>
+  <meta name="description" content="Relatos reais, dia após dia, de uma jornada rumo à liberdade financeira. Mudanças, desafios e vitórias documentados com honestidade." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #faf9f7;
+      --bg2: #f2f0ec;
+      --text: #1a1a18;
+      --text2: #5a5a54;
+      --text3: #9a9a92;
+      --border: rgba(26,26,24,0.12);
+      --border2: rgba(26,26,24,0.22);
+      --green: #1D9E75;
+      --green-bg: #E1F5EE;
+      --green-text: #0F6E56;
+      --amber-bg: #FAEEDA;
+      --amber-text: #854F0B;
+      --purple-bg: #EEEDFE;
+      --purple-text: #534AB7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* NAV */
+    nav {
+      border-bottom: 0.5px solid var(--border);
+      padding: 1.4rem 0;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+    nav .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; color: var(--text); text-decoration: none; }
+    .logo span { display: block; font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--text3); font-family: 'Inter', sans-serif; font-weight: 400; margin-top: 1px; }
+    .nav-links { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+    .nav-links a:hover { color: var(--text); }
+    .day-counter {
+      background: var(--bg2);
+      border: 0.5px solid var(--border2);
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text2);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 42px;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+    }
+    .hero h1 em { font-style: italic; font-weight: 400; color: var(--text2); }
+    .hero p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text2);
+      max-width: 520px;
+    }
+
+    /* METRICS */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 1.75rem;
+      background: var(--bg2);
+      border-radius: 12px;
+      margin: 2rem 0;
+    }
+    .metric { text-align: center; }
+    .metric-val {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .metric-val.green { color: var(--green); }
+    .metric-label { font-size: 11px; color: var(--text3); margin-top: 5px; letter-spacing: 0.04em; }
+    .metric-sub { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+    /* SECTION BAR */
+    .section-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.75rem 0 1rem;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 0;
+    }
+    .section-bar span { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); }
+
+    /* ENTRIES */
+    .entries { display: flex; flex-direction: column; }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      border-bottom: 0.5px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+    .entry:hover .entry-title { color: var(--text2); }
+
+    .day-num {
+      font-family: 'Fraunces', serif;
+      font-size: 30px;
+      font-weight: 600;
+      color: var(--border2);
+      line-height: 1;
+      padding-top: 4px;
+    }
+
+    .entry-tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 5px; }
+    .entry-title { font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.25; margin-bottom: 6px; transition: color .15s; }
+    .entry-body { font-size: 14px; line-height: 1.7; color: var(--text2); }
+    .entry-meta { font-size: 11px; color: var(--text3); margin-top: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .pill-win { background: var(--green-bg); color: var(--green-text); }
+    .pill-challenge { background: var(--amber-bg); color: var(--amber-text); }
+    .pill-change { background: var(--purple-bg); color: var(--purple-text); }
+
+    /* ARTICLE PAGE */
+    .article { display: none; padding: 2.5rem 0 4rem; }
+    .article.active { display: block; }
+    .home-section { }
+    .home-section.hidden { display: none; }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text3);
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .back-btn:hover { color: var(--text2); }
+    .back-btn svg { width: 14px; height: 14px; }
+
+    .article-eyebrow { font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--text3); margin-bottom: 1rem; }
+    .article-title { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 600; line-height: 1.1; letter-spacing: -0.4px; margin-bottom: 0.75rem; }
+    .article-title em { font-style: italic; font-weight: 400; color: var(--text2); }
+    .article-meta { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--text3); padding-bottom: 1.5rem; border-bottom: 0.5px solid var(--border); margin-bottom: 2rem; flex-wrap: wrap; }
+    .article-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border2); flex-shrink: 0; }
+
+    .article-lead {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text2);
+      padding-bottom: 2rem;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .article-content p { font-size: 16px; line-height: 1.9; color: var(--text2); margin-bottom: 1.5rem; }
+    .article-content h2 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600; margin: 2.5rem 0 1rem; color: var(--text); }
+    .article-content blockquote {
+      margin: 2rem 0;
+      padding: 1.25rem 0 1.25rem 1.5rem;
+      border-left: 2px solid var(--border2);
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .article-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); }
+    .article-tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border: 0.5px solid var(--border2); border-radius: 8px; color: var(--text3); }
+
+    /* FOOTER */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    footer .tagline { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: var(--text3); }
+    .sub-form { display: flex; gap: 8px; }
+    .sub-form input {
+      font-size: 13px;
+      padding: 8px 12px;
+      border: 0.5px solid var(--border2);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text);
+      width: 180px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+    }
+    .sub-form input:focus { border-color: var(--text3); }
+    .sub-form button {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 30px; }
+      .metrics { grid-template-columns: repeat(3,1fr); gap: 8px; padding: 1.25rem; }
+      .metric-val { font-size: 22px; }
+      nav .inner { gap: 0.75rem; }
+      .nav-links a { display: none; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container inner">
+    <a class="logo" href="#" onclick="showHome()">
+      Livre em Construção
+      <span>Uma jornada real, dia após dia</span>
+    </a>
+    <div class="nav-links">
+      <a href="#entradas">Jornada</a>
+      <a href="#sobre">Sobre</a>
+      <span class="day-counter" id="day-counter">Dia 1</span>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- HOME -->
+  <div class="home-section" id="home">
+
+    <section class="hero" id="sobre">
+      <p class="eyebrow">O começo de tudo</p>
+      <h1>Decidi mudar.<br><em>Agora você acompanha.</em></h1>
+      <p>Este blog não é sobre dinheiro. É sobre coragem de olhar para a própria vida e decidir que dá para mais. Aqui vão os dias bons, os dias difíceis, os tropeços e as viradas — tudo real, tudo honesto.</p>
+    </section>
+
+    <div class="metrics" id="metrics-bar">
+      <div class="metric">
+        <div class="metric-val" id="m-dias">Dia 1</div>
+        <div class="metric-label">Na jornada</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val green" id="m-eco">R$ 0</div>
+        <div class="metric-label">Economizado</div>
+        <div class="metric-sub" id="m-eco-sub">começando agora</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val" id="m-posts">1</div>
+        <div class="metric-label">Relatos</div>
+        <div class="metric-sub">publicados</div>
+      </div>
+    </div>
+
+    <div class="section-bar" id="entradas">
+      <span>Entradas recentes</span>
+      <span id="total-posts">0 relatos</span>
+    </div>
+
+    <div class="entries" id="entries-list"></div>
+
+    <footer>
+      <span class="tagline">"Cada dia registrado é um dia que não vai embora."</span>
+      <div class="sub-form">
+        <input type="email" placeholder="seu@email.com" />
+        <button>Seguir</button>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ARTICLE VIEW -->
+  <div class="article" id="article-view">
+    <button class="back-btn" onclick="showHome()">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+      Voltar para a jornada
+    </button>
+    <div id="article-content"></div>
+  </div>
+
+</main>
+
+<script>
+  // ─── DATA ───────────────────────────────────────────────────
+  // Para adicionar um novo relato, copie o bloco abaixo e cole
+  // dentro do array "posts", alterando os campos.
+  // O campo "day" é o número do dia, "date" a data, "type" pode
+  // ser "change" (virada), "challenge" (desafio) ou "win" (vitória).
+  // ────────────────────────────────────────────────────────────
+
+  const posts = [
+    {
+      day: 1,
+      date: "15 de maio de 2026",
+      type: "change",
+      tag: "Primeiro passo",
+      title: "Por que decidi mudar tudo hoje",
+      excerpt: "O dia em que olhei para o extrato do banco e entendi que algo precisava mudar. A decisão, o medo e o plano que estou traçando.",
+      lead: "Tem dias que a gente para, olha para a própria vida e sente que não consegue mais fingir que está tudo bem. Hoje foi esse dia para mim.",
+      content: `
+        <p>Abri o aplicativo do banco hoje cedo, como faço todo dia. Mas hoje foi diferente. Fiquei olhando para aquele número — o saldo, as dívidas, os gastos do mês — e algo travou dentro de mim. Não era a primeira vez que eu via aquilo. Mas foi a primeira vez que eu realmente <em>senti</em>.</p>
+        <p>Tenho 27 anos. Trabalho há cinco. E não tenho praticamente nada guardado. Cada mês que passa parece igual ao anterior: dinheiro entra, dinheiro sai, e eu fico no mesmo lugar. Às vezes fico pior.</p>
+        <h2>O momento de virada</h2>
+        <p>Não foi um evento dramático. Não perdi emprego, não caí em dívida enorme. Foi só um cansaço silencioso que chegou ao limite. Cansaço de não ter escolha. Cansaço de trabalhar para pagar conta. Cansaço de adiar sonhos que nem sei mais quais são direito.</p>
+        <blockquote>Liberdade financeira não é ficar rico. É ter escolha. E eu quero escolha.</blockquote>
+        <p>Então hoje decidi documentar. Não para parecer que tenho as respostas — não tenho. Mas para me responsabilizar. Para que cada dia, cada mudança, cada tropeço fique registrado aqui. Real, sem enfeite.</p>
+        <h2>O que vou fazer</h2>
+        <p>Ainda não tenho um plano perfeito. Mas tenho um ponto de partida: saber exatamente quanto tenho, quanto devo e quanto gasto. Essa semana vou fazer esse mapeamento completo e publicar aqui. Pode ser que eu me assuste. Provavelmente vou. Mas é o começo.</p>
+        <p>Se você está lendo isso, obrigado por acompanhar. Vem junto.</p>
+      `
+    }
+    // ── COLE NOVOS POSTS AQUI ──
+    // {
+    //   day: 2,
+    //   date: "16 de maio de 2026",
+    //   type: "challenge",
+    //   tag: "Desafio",
+    //   title: "Título do seu relato",
+    //   excerpt: "Resumo curto que aparece na lista.",
+    //   lead: "Frase de abertura do artigo.",
+    //   content: `<p>Seu texto aqui...</p>`
+    // },
+  ];
+
+  // ─── RENDER ──────────────────────────────────────────────────
+
+  const typeLabels = {
+    win: { label: "Vitória", cls: "pill-win" },
+    challenge: { label: "Desafio", cls: "pill-challenge" },
+    change: { label: "Virada", cls: "pill-change" }
+  };
+
+  function renderList() {
+    const list = document.getElementById("entries-list");
+    const totalEl = document.getElementById("total-posts");
+    const mPosts = document.getElementById("m-posts");
+    const mDias = document.getElementById("m-dias");
+    const counter = document.getElementById("day-counter");
+
+    const sorted = [...posts].sort((a, b) => b.day - a.day);
+    const lastDay = sorted[0]?.day || 1;
+
+    totalEl.textContent = posts.length + (posts.length === 1 ? " relato" : " relatos");
+    mPosts.textContent = posts.length;
+    mDias.textContent = "Dia " + lastDay;
+    counter.textContent = "Dia " + lastDay;
+
+    list.innerHTML = sorted.map((p, i) => `
+      <div class="entry" onclick="showArticle(${posts.indexOf(p)})">
+        <div class="day-num">${String(p.day).padStart(2,"0")}</div>
+        <div>
+          <p class="entry-tag">${p.tag}</p>
+          <p class="entry-title">${p.title}</p>
+          <p class="entry-body">${p.excerpt}</p>
+          <div class="entry-meta">
+            <span>${p.date}</span>
+            <span class="pill ${typeLabels[p.type].cls}">${typeLabels[p.type].label}</span>
+          </div>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  function showArticle(index) {
+    const p = posts[index];
+    const t = typeLabels[p.type];
+    document.getElementById("home").classList.add("hidden");
+    const view = document.getElementById("article-view");
+    view.classList.add("active");
+    document.getElementById("article-content").innerHTML = `
+      <p class="article-eyebrow">${p.tag} · Dia ${p.day}</p>
+      <h1 class="article-title">${p.title}</h1>
+      <div class="article-meta">
+        <span>${p.date}</span>
+        <span class="dot"></span>
+        <span class="pill ${t.cls}">${t.label}</span>
+      </div>
+      <p class="article-lead">${p.lead}</p>
+      <div class="article-content">${p.content}</div>
+      <div class="article-tags">
+        <span class="article-tag">Liberdade financeira</span>
+        <span class="article-tag">${p.tag}</span>
+        <span class="article-tag">Dia ${p.day}</span>
+      </div>
+    `;
+    window.scrollTo(0, 0);
+  }
+
+  function showHome() {
+    document.getElementById("home").classList.remove("hidden");
+    document.getElementById("article-view").classList.remove("active");
+    window.scrollTo(0, 0);
+  }
+
+  renderList();
+</script>
+
+</body>
+</html>
